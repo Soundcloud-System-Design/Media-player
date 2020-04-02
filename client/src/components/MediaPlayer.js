@@ -1,15 +1,16 @@
-import React, { useState } from 'react';
-import moment from 'moment';
-import TogglePlay from './TogglePlay.js';
-import ProgressBar from './ProgressBar.js';
+import React, { useState } from "react";
+import moment from "moment";
+import TogglePlay from "./TogglePlay.js";
+import ProgressBar from "./ProgressBar.js";
+import albumIMG from "./download.jpeg";
 
 // styles
-import Container from '../styled-components/Container.js';
-import Image from '../styled-components/Image.js';
-import Date_Genre_Style from '../styled-components/Date-Genre.js';
-import Band from '../styled-components/BandName.js';
-import SongStyle from '../styled-components/SongName.js';
-import NameContainer from '../styled-components/SongBandContainer.js';
+import Container from "../styled-components/Container.js";
+import Image from "../styled-components/Image.js";
+import Date_Genre_Style from "../styled-components/Date-Genre.js";
+import Band from "../styled-components/BandName.js";
+import SongStyle from "../styled-components/SongName.js";
+import NameContainer from "../styled-components/SongBandContainer.js";
 
 const MediaPlayer = ({ currentSong }) => {
   const now = moment();
@@ -23,7 +24,8 @@ const MediaPlayer = ({ currentSong }) => {
     <Container>
       <Image src={currentSong.album_image} />
       <Date_Genre_Style>
-        {timeElapsed}<br />
+        {timeElapsed}
+        <br />
         {currentSong.music_genre}
       </Date_Genre_Style>
       <NameContainer>
@@ -35,12 +37,9 @@ const MediaPlayer = ({ currentSong }) => {
         <Band>{currentSong.band_name}</Band>
         <SongStyle>{currentSong.song_name}</SongStyle>
       </NameContainer>
-      <ProgressBar
-        currentTime={time}
-        duration={duration}
-      />
+      <ProgressBar currentTime={time} duration={duration} />
     </Container>
-  )
-}
+  );
+};
 
 export default MediaPlayer;
