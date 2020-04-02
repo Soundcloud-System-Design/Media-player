@@ -1,7 +1,9 @@
-import React from 'react';
-import ProgressBar from './ProgressBar.js';
+import React from "react";
+import ProgressBar from "./ProgressBar.js";
+import play from "./playButton.png";
+import pause from "./pauseButton.png";
 
-import ButtonStyle from '../styled-components/Play-Pause.js';
+import ButtonStyle from "../styled-components/Play-Pause.js";
 
 class TogglePlay extends React.Component {
   constructor(props) {
@@ -9,14 +11,14 @@ class TogglePlay extends React.Component {
     this.state = {
       isPlaying: false,
       isLoaded: false
-    }
+    };
     this.toggle = this.toggle.bind(this);
     this.updateTime = this.updateTime.bind(this);
   }
 
   toggle() {
     if (this.state.isLoaded) {
-      const myAudio = document.getElementById('myAudio');
+      const myAudio = document.getElementById("myAudio");
       myAudio.volume = 0.05;
       this.setState({ isPlaying: !this.state.isPlaying }, () => {
         this.state.isPlaying ? myAudio.play() : myAudio.pause();
@@ -25,9 +27,9 @@ class TogglePlay extends React.Component {
   }
 
   componentDidMount() {
-    const myAudio = document.getElementById('myAudio');
-    myAudio.onloadedmetadata = (e) => this.updateTime(e);
-    myAudio.ontimeupdate = (e) => this.updateTime(e);
+    const myAudio = document.getElementById("myAudio");
+    myAudio.onloadedmetadata = e => this.updateTime(e);
+    myAudio.ontimeupdate = e => this.updateTime(e);
     myAudio.oncanplay = () => this.setState({ isLoaded: true });
   }
 
@@ -39,29 +41,31 @@ class TogglePlay extends React.Component {
   renderProgressBar() {
     <ProgressBar
       currentTime={this.state.currentTime}
-      duration={this.state.duration} />
+      duration={this.state.duration}
+    />;
   }
 
   render() {
-    const playImg = 'https://fec-media-player.s3.us-east-2.amazonaws.com/play.png';
-    const pauseImg = 'https://fec-media-player.s3.us-east-2.amazonaws.com/pause.png';
+    const playImg = play;
+    const pauseImg = pause;
+    ("https://fec-media-player.s3.us-east-2.amazonaws.com/pause.png");
     return (
       <span>
         <audio
           id="myAudio"
           src={this.props.currentSong.song_url}
-          preload="auto">
-        </audio>
+          preload="auto"
+        ></audio>
         <a onClick={this.toggle}>
-          {this.state.isPlaying ?
-            <ButtonStyle
-              src={require = (pauseImg)} /> :
-            <ButtonStyle
-              src={require = (playImg)} />}
+          {this.state.isPlaying ? (
+            <ButtonStyle src={(require = pauseImg)} />
+          ) : (
+            <ButtonStyle src={(require = playImg)} />
+          )}
         </a>
         {this.renderProgressBar()}
       </span>
-    )
+    );
   }
 }
 

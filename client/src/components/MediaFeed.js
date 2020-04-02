@@ -12,7 +12,7 @@ class MediaFeed extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('http://3.21.207.156:3305/songs')
+    axios.get('/songs')
       .then(music => this.setState({
         currentSong: music.data.data[0]
       }))
