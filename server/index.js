@@ -14,14 +14,14 @@ const connection = mysql.createConnection({
 
 connection.connect(err => {
   if (err) {
-    console.log('err comment')
+    console.log("err comment");
     console.log(err);
   }
 });
 
-
 app.use(express.static("../client/dist"));
 app.use(cors());
+
 app.get("/", (req, res) => {
   res.send("this works");
 });
@@ -36,6 +36,21 @@ app.get("/songs", (req, res) => {
       });
     }
   });
+});
+
+//update
+app.put("/", (req, res) => {
+  res.end();
+});
+
+//create
+app.post("/", (req, res) => {
+  res.end();
+});
+
+//delete
+app.delete("/", (req, res) => {
+  res.end();
 });
 
 app.listen(3305, () => {
