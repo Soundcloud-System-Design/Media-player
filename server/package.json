@@ -14,10 +14,13 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
+    "csv-write-stream": "^2.0.0",
     "express": "^4.17.1",
+    "faker": "^4.1.0",
     "mysql": "^2.18.1",
     "mysql2": "^2.1.0",
     "nodemon": "^2.0.2",
+    "pg": "^8.0.0",
     "s3": "^4.4.0"
   }
 }

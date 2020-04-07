@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import moment from "moment";
 import TogglePlay from "./TogglePlay.js";
 import ProgressBar from "./ProgressBar.js";
-import albumIMG from "./download.jpeg";
 
 // styles
 import Container from "../styled-components/Container.js";
