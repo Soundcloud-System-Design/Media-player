@@ -1,5 +1,13 @@
 INSERT INTO songs VALUES (1, 'Epic', '#fantasy', 'bensound', 'https://soundcloud-mp3.s3-us-west-1.amazonaws.com/download.png', 'https://soundcloud-mp3.s3-us-west-1.amazonaws.com/bensound-epic.mp3', '2 April 2020');
 
+INSERT INTO songs VALUES (2, 'Business Man', '#rock', 'Jakedeeyah', 'https://soundcloud-mp3.s3-us-west-1.amazonaws.com/download.png', 'https://soundcloud-mp3.s3-us-west-1.amazonaws.com/Business+Men(3).wav', '2 January 2020');
+
+INSERT INTO songs VALUES (3, 'Amanda', '#rock', 'The Moose', 'https://soundcloud-mp3.s3-us-west-1.amazonaws.com/download.png', 'https://soundcloud-mp3.s3-us-west-1.amazonaws.com/amanda(cut2).wav', '2 January 2020');
+
+INSERT INTO songs VALUES (4, 'The News', '#rock', 'Jakedeeyah', 'https://soundcloud-mp3.s3-us-west-1.amazonaws.com/download.png', 'https://soundcloud-mp3.s3-us-west-1.amazonaws.com/The+News+(Final).wav', '2 January 2020');
+
+
+
 -- INSERT INTO songs VALUES (2, 'All To Myself', '#Country', 'Dan + Shay', 'https://fec-media-player.s3.us-east-2.amazonaws.com/AllToMyself.png', 'https://fec-media-player.s3.us-east-2.amazonaws.com/Dan+%2B+Shay+-+All+To+Myself+(Icon+Video).mp3', '3 May 2018');
 
 -- INSERT INTO songs VALUES (3, 'Sweet but Psycho', '#Pop', 'Ava Max', 'https://fec-media-player.s3.us-east-2.amazonaws.com/SweetButPsycho.jpg', 'https://fec-media-player.s3.us-east-2.amazonaws.com/Ava+Max+-+Sweet+but+Psycho+(Lyrics).mp3', '15 November 2018');
