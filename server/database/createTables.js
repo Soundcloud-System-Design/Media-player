@@ -10,33 +10,35 @@ const pool = new Pool({
 
 const randomId = Math.floor(Math.random() * Math.floor(50));
 
-const getAllSongs = (req, res) => {
-  pool.query("SELECT * FROM song_artist_album", (err, result) => {
-    if (err) {
-      throw err;
-    } else {
-      res.json(result);
-    }
-  });
-};
+// const getAllSongs = (req, res) => {
+//   pool.query("SELECT * FROM song_artist_album", (err, result) => {
+//     if (err) {
+//       throw err;
+//     } else {
+//       res.json(result);
+//     }
+//   });
+// };
 
-const getSong = (req, res) => {
-  pool.query(
-    `SELECT * FROM song_artist_album WHERE id = '${randomId}`,
-    (err, result) => {
-      if (err) {
-        throw err;
-      } else {
-        res.json(result);
-      }
-    }
-  );
-};
+// const getSong = (req, res) => {
+//   pool.query(
+//     `SELECT * FROM song_artist_album WHERE id = '${randomId}`,
+//     (err, result) => {
+//       if (err) {
+//         throw err;
+//       } else {
+//         res.json(result);
+//       }
+//     }
+//   );
+// };
 
 pool.query(
   `CREATE TABLE IF NOT EXISTS songs (
   id SERIAL PRIMARY KEY,
   song_name varchar (150),
+  music_genre varchar (150),
+  release_date varchar(150),
   song_url varchar (150)
 )`,
   (err, res) => {
@@ -47,7 +49,7 @@ pool.query(
       `CREATE TABLE IF NOT EXISTS albums (
     id SERIAL PRIMARY KEY,
     album_name varchar(150),
-    album_url varchar(150)
+    album_image varchar(150)
   )`,
       (err, res) => {
         if (err) {
@@ -56,7 +58,7 @@ pool.query(
         pool.query(
           `CREATE TABLE IF NOT EXISTS artists (
       id SERIAL PRIMARY KEY,
-      artist_name varchar(150)
+      band_name varchar(150)
     )`,
           (err, res) => {
             if (err) {

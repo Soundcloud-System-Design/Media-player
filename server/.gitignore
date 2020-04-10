@@ -6,3 +6,6 @@ artists.csv
 albums.csv
 joinTable.csv
 songs.csv
+
+#ignore json files
+mongoData.json

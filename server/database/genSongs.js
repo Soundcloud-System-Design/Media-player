@@ -24,6 +24,8 @@ const dataGen = () => {
   for (var i = 0; i < 100; i++) {
     writer.write({
       song_name: faker.lorem.words(),
+      music_genre: faker.lorem.words(),
+      release_date: faker.date.past(),
       song_url: songUrl[songId],
     });
     if (songId === songUrl.length - 1) {
@@ -37,4 +39,3 @@ const dataGen = () => {
 };
 
 dataGen();
-
