@@ -1,41 +1,29 @@
 const express = require("express");
 const mysql = require("mysql2");
 const cors = require("cors");
-// const config = require('./config');
+const pool = require("./database/dbconnect.js");
+const query = require("./database/queries.js");
 
 const app = express();
-
-const connection = mysql.createConnection({
-  // host: 'localhost',
-  user: "root",
-  password: "password",
-  database: "media"
-});
-
-connection.connect(err => {
-  if (err) {
-    console.log("err comment");
-    console.log(err);
-  }
-});
 
 app.use(express.static("../client/dist"));
 app.use(cors());
 
-app.get("/", (req, res) => {
-  res.send("this works");
-});
-
 app.get("/songs", (req, res) => {
-  connection.query(`SELECT * FROM songs ORDER BY RAND()`, (err, results) => {
-    if (err) {
-      return res.send(err);
-    } else {
-      return res.json({
-        data: results
-      });
+  pool.query(
+    "SELECT * FROM songs, artists, albums, songs_artist_album WHERE songs_artist_album.song_id = songs.id AND songs_artist_album.album_id = albums.id AND songs_artist_album.artists_id = artists.id",
+    (err, result) => {
+      if (err) {
+        throw err;
+      } else {
+        console.log(result);
+        return res.json({
+          data: result,
+        });
+      }
     }
-  });
+  );
+  // res.send('worked')
 });
 
 //update
