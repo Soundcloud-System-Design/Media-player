@@ -8,19 +8,19 @@ class MediaFeed extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      songId: 2,
       currentSong: [],
     };
   }
 
   componentDidMount() {
-    const randomSong = fake.random.number({ min: 1, max: 25 });
+    // const randomSong = fake.random.number({ min: 1, max: 25 });
     axios
-      .get("/songs")
+      .get(`/songs/${this.state.songId}`)
       .then((music) => {
-        // this.setState({
-        //   currentSong: music.data.data.rows[randomSong],
-        // });
-        console.log('hi')
+        this.setState({
+          currentSong: music.data.data.rows[0],
+        });
       })
       .catch(function (error) {
         console.log(error);

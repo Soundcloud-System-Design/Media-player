@@ -1,5 +1,4 @@
 const express = require("express");
-const mysql = require("mysql2");
 const cors = require("cors");
 const pool = require("./database/dbconnect.js");
 const query = require("./database/queries.js");
@@ -9,21 +8,20 @@ const app = express();
 app.use(express.static("../client/dist"));
 app.use(cors());
 
-app.get("/songs", (req, res) => {
-  pool.query(
-    "SELECT * FROM songs, artists, albums, songs_artist_album WHERE songs_artist_album.song_id = songs.id AND songs_artist_album.album_id = albums.id AND songs_artist_album.artists_id = artists.id",
+app.get("/songs/:songId", async (req, res) => {
+  const songId = req.params.songId;
+  await pool.query(
+    `SELECT * FROM songs, artists, albums, songs_artist_album WHERE songs_artist_album.song_id = songs.id AND songs_artist_album.album_id = albums.id AND songs_artist_album.artists_id = artists.id AND songs.id = ${songId}`,
     (err, result) => {
       if (err) {
         throw err;
       } else {
-        console.log(result);
         return res.json({
           data: result,
         });
       }
     }
   );
-  // res.send('worked')
 });
 
 //update
@@ -44,3 +42,5 @@ app.delete("/", (req, res) => {
 app.listen(3305, () => {
   console.log("media server listening on 3305");
 });
+
+// "SELECT * FROM songs, artists, albums, songs_artist_album WHERE songs_artist_album.song_id = songs.id AND songs_artist_album.album_id = albums.id AND songs_artist_album.artists_id = artists.id"

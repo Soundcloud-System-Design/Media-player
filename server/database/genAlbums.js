@@ -9,7 +9,8 @@ const albumGen = () => {
   for (var i = 0; i < 4000000; i++) {
     writer.write({
       album_name: faker.lorem.words(),
-      album_img: faker.image.image(),
+      album_img:
+        "https://soundcloud-mp3.s3-us-west-1.amazonaws.com/download.png",
     });
   }
   writer.end();
