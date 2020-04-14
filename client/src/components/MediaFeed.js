@@ -7,20 +7,21 @@ import fake from "faker";
 class MediaFeed extends React.Component {
   constructor(props) {
     super(props);
+    const randomSong = fake.random.number({ min: 1, max: 10 });
+
     this.state = {
+      songId: randomSong,
       currentSong: [],
     };
   }
 
   componentDidMount() {
-    const randomSong = fake.random.number({ min: 1, max: 25 });
     axios
-      .get("/songs")
+      .get(`/songs/${this.state.songId}`)
       .then((music) => {
-        // this.setState({
-        //   currentSong: music.data.data.rows[randomSong],
-        // });
-        console.log('hi')
+        this.setState({
+          currentSong: music.data.data.rows[0],
+        });
       })
       .catch(function (error) {
         console.log(error);
