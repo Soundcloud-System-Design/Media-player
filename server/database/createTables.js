@@ -8,31 +8,6 @@ const pool = new Pool({
   port: 5432,
 });
 
-const randomId = Math.floor(Math.random() * Math.floor(50));
-
-// const getAllSongs = (req, res) => {
-//   pool.query("SELECT * FROM song_artist_album", (err, result) => {
-//     if (err) {
-//       throw err;
-//     } else {
-//       res.json(result);
-//     }
-//   });
-// };
-
-// const getSong = (req, res) => {
-//   pool.query(
-//     `SELECT * FROM song_artist_album WHERE id = '${randomId}`,
-//     (err, result) => {
-//       if (err) {
-//         throw err;
-//       } else {
-//         res.json(result);
-//       }
-//     }
-//   );
-// };
-
 pool.query(
   `CREATE TABLE IF NOT EXISTS songs (
   id SERIAL PRIMARY KEY,
